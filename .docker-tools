@@ -7,15 +7,15 @@ container_ip() {
   docker inspect -f '{{.NetworkSettings.IPAddress}}' $1
 }
 
-docker_ssh() {
+ssh_to_container() {
   ssh $(container_ip $1)
 }
 
-docker_bash() {
+bash_to_image() {
   docker run --rm -i -t $1 /bin/bash
 }
 
-docker_clean() {
+clean_docker_images() {
   docker ps -a | grep 'Exit' | awk '{print $1}' | while read -r id ;do
     docker rm $id
   done
@@ -40,7 +40,7 @@ sshconfig_setup() {
   fi
 }
 
-stop_rm() {
+stop_rm_container() {
   docker stop $1 && docker rm $1
 }
 
@@ -78,10 +78,10 @@ docker_tools() {
 }
 
 alias d_ip=container_ip
-alias d_ssh=docker_ssh
-alias d_bash=docker_bash
-alias d_clean=docker_clean
-alias d_drop=stop_rm
+alias d_ssh=ssh_to_container
+alias d_bash=bash_to_image
+alias d_clean=clean_docker_images
+alias d_drop=stop_rm_container
 alias d_update=docker_tools_update
 
 alias d_ssh_setup=sshconfig_setup
