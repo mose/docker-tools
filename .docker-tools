@@ -1,3 +1,5 @@
+DOCKER_TOOLS_VERSION=0.1.0
+
 container_ip() {
   docker inspect -f '{{.NetworkSettings.IPAddress}}' $1
 }
