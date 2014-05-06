@@ -8,11 +8,11 @@ if ! command -v curl &> /dev/null; then
   fi
 fi
 
-curl -o $HOME/.bash-docker -s \
+curl -o $HOME/.docker-tools -s \
   https://raw.githubusercontent.com/mose/docker-tools/master/.bash-docker
 
-if ! grep '\.bash-docker' $HOME/.zshrc &> /dev/null; then
-  echo "source $HOME/.bash-docker" >> $HOME/.zshrc
+if ! grep '\.docker-tools' $HOME/.zshrc &> /dev/null; then
+  echo "source $HOME/.docker-tools" >> $HOME/.zshrc
 fi
 
 echo "docker-tools installed."
