@@ -2,6 +2,10 @@ container_ip() {
   docker inspect -f '{{.NetworkSettings.IPAddress}}' $1
 }
 
+docker_ssh() {
+  ssh $(container_ip $1)
+}
+
 docker_clean() {
   docker ps -a | grep 'Exit' | awk '{print $1}' | while read -r id ;do
     docker rm $id
@@ -32,6 +36,7 @@ docker_tools() {
   echo "Usage:"
   echo "  d_ip <container>   : spits the IP of a given container"
   echo "                       <container> can be a hash or a name"
+  echo "  d_ssh <container>  : ssh to the container (supposing it runs sshd)"
   echo "  d_clean            : cleans transitory images when a build fails"
   echo "  d_drop <container> : stop a running container and rm it (as --rm don't work with -d)"
   echo
