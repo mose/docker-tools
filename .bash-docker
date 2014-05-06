@@ -13,6 +13,17 @@ docker_clean() {
   done
 }
 
+sshconfig_setup() {
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    if ! grep -c 'Host 172.17.0.\*' $HOME/.ssh/config &> /dev/null; then
+      echo "Host 172.17.0.*" >> ~/.ssh/config
+      echo "  User root" >> ~/.ssh/config
+      echo "  IdentityFile $ROOTDIR/.ssh/id_rsa" >> ~/.ssh/config
+      echo "  ProxyCommand ssh -q -W %h:%p vagrant-osx" >> ~/.ssh/config
+    fi
+  fi
+}
+
 stop_rm() {
   docker stop $1 && docker rm $1
 }
@@ -23,10 +34,14 @@ docker_tools() {
   echo "                       <container> can be a hash or a name"
   echo "  d_clean            : cleans transitory images when a build fails"
   echo "  d_drop <container> : stop a running container and rm it (as --rm don't work with -d)"
+  echo
+  echo "Specific for use with docker-osx:"
+  echo "  d_ssh_setup        : adds a trick to ssh directly in the containers on the vagrant"
 }
 
 alias d_ip=container_ip
 alias d_clean=docker_clean
 alias d_drop=stop_rm
+alias d_ssh_setup=sshconfig_setup
 
 alias docker-tools=docker_tools
