@@ -1,4 +1,7 @@
-DOCKER_TOOLS_VERSION=0.1.0
+# https://github.com/mose/docker-tools
+# for documentation
+
+DOCKER_TOOLS_VERSION=0.1.1
 
 container_ip() {
   docker inspect -f '{{.NetworkSettings.IPAddress}}' $1
