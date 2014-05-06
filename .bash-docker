@@ -13,14 +13,20 @@ docker_clean() {
   done
 }
 
+stop_rm() {
+  docker stop $1 && docker rm $1
+}
+
 docker_tools() {
   echo "Usage:"
-  echo "  d_ip <container> : spits the IP of a given container"
-  echo "                     <container> can be a hash or a name"
-  echo "  d_clean          : cleans transitory images when a build fails"
+  echo "  d_ip <container>   : spits the IP of a given container"
+  echo "                       <container> can be a hash or a name"
+  echo "  d_clean            : cleans transitory images when a build fails"
+  echo "  d_drop <container> : stop a running container and rm it (as --rm don't work with -d)"
 }
 
 alias d_ip=container_ip
 alias d_clean=docker_clean
+alias d_drop=stop_rm
 
 alias docker-tools=docker_tools
