@@ -5,10 +5,10 @@ container_ip() {
 }
 
 docker_tools() {
-  echo "Usage:
-    d_ip <container> : spits the IP of a given container
-                       <container> can be a hash or a name
-  "
+  echo "Usage:"
+  echo "  d_ip <container> : spits the IP of a given container"
+  echo "                     <container> can be a hash or a name"
 }
 
 alias d_ip=container_ip
+alias docker-tools=docker_tools
