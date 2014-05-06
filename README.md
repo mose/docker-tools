@@ -15,11 +15,13 @@ Auto install
 
 If you trust me (or if you are mose itself). But really, prefer manual install, as a matter of habit, or read the source of the install script carefully to see if it fits you.
 
-    curl  -H "Cache-control: no-cache" https://raw.githubusercontent.com/mose/docker-tools/master/install-bash.sh | bash
+    curl -H "Cache-control: no-cache" \
+    https://raw.githubusercontent.com/mose/docker-tools/master/install-bash.sh | bash
 
 or
 
-    curl  -H "Cache-control: no-cache" https://raw.githubusercontent.com/mose/docker-tools/master/install-zsh.sh | zsh
+    curl -H "Cache-control: no-cache" \
+    https://raw.githubusercontent.com/mose/docker-tools/master/install-zsh.sh | zsh
 
 Update
 ----------
