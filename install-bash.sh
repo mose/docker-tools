@@ -8,7 +8,7 @@ if ! command -v curl &> /dev/null; then
   fi
 fi
 
-curl -s -o $HOME/.bash-docker \
+curl -o $HOME/.bash-docker -s \
   https://raw.githubusercontent.com/mose/docker-tools/master/.bash-docker
 
 if ! grep '\.bash-docker' $HOME/.bashrc &> /dev/null; then
