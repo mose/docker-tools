@@ -9,7 +9,7 @@ if ! command -v curl &> /dev/null; then
 fi
 
 curl -o $HOME/.docker-tools -s \
-  https://raw.githubusercontent.com/mose/docker-tools/master/.bash-docker
+  https://raw.githubusercontent.com/mose/docker-tools/master/.docker-tools
 
 if ! grep '\.docker-tools' $HOME/.zshrc &> /dev/null; then
   echo "source $HOME/.docker-tools" >> $HOME/.zshrc
