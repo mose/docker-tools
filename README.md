@@ -3,18 +3,21 @@ docker-tools
 
 A set of shell tools for easier docker playground.
 
-Install
+Manual Install
 ---------------
 
-to install, you can get .bash-docker and add to your .bashrc
+to install teh bash version, you can get .bash-docker and add to your .bashrc
 
     source .bash-docker
 
 (zsh version in preparation)
 
-Or if you trust me (or if you are mose itself)
+Auto install
+---------------
 
-    curl https://raw.githubusercontent.com/mose/docker-tools/master/install.sh | bash
+If you trust me (or if you are mose itself). But really, prefer manual install, as a matter of habit, or read the source of the install script carefully to see if it fits you.
+
+    curl https://raw.githubusercontent.com/mose/docker-tools/master/install-bash.sh | bash
 
 Usage
 ------------
