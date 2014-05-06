@@ -21,6 +21,10 @@ or
 
     curl  -H "Cache-control: no-cache" https://raw.githubusercontent.com/mose/docker-tools/master/install-zsh.sh | zsh
 
+Update
+----------
+
+You can get the last version of `.docker-tools` from this repo after installation with `d_update`.
 
 Usage
 ------------
@@ -29,7 +33,7 @@ Usage
 
 This will list available commands provided by that toolbox.
 
-If you are on mac OSX, the script assumes that you use https://github.com/noplay/docker-osx there are some special commands in docker-tools to help handle the vagrant intermediary better.
+If you are on mac OSX, the script assumes that you use https://github.com/noplay/docker-osx and there are some special commands in docker-tools to help handle the vagrant intermediary better (`d_ssh_setup` in perticular, makes possible to directly ssh containers without hopping on vagrant).
 
 Copyright
 -------------
