@@ -8,7 +8,7 @@ if ! command -v curl &> /dev/null; then
   fi
 fi
 
-curl -o $HOME/.docker-tools -s \
+curl -H "Cache-control: no-cache" -o $HOME/.docker-tools -s \
   https://raw.githubusercontent.com/mose/docker-tools/master/.docker-tools
 
 if ! grep '\.docker-tools' $HOME/.zshrc &> /dev/null; then

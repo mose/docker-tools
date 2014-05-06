@@ -40,9 +40,10 @@ stop_rm() {
 }
 
 docker_tools_update() {
-  curl -o $HOME/.docker-tools -s \
+  curl -H "Cache-control: no-cache" -o $HOME/.docker-tools -s \
     https://raw.githubusercontent.com/mose/docker-tools/master/.docker-tools
   source $HOME/.docker-tools
+  echo "docker-tools updated."
 }
 
 
