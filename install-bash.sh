@@ -16,4 +16,4 @@ if ! grep '\.docker-tools' $HOME/.bashrc &> /dev/null; then
 fi
 
 echo "docker-tools installed."
-echo "type `docker-tools` to see the list of commands."
+echo "type 'docker-tools' to see the list of commands."
