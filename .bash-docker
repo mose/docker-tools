@@ -1,0 +1,14 @@
+#!/bin/bash
+
+container_ip() {
+  docker inspect -f '{{.NetworkSettings.IPAddress}}' $1
+}
+
+docker_tools() {
+  echo "Usage:
+    d_ip <container> : spits the IP of a given container
+                       <container> can be a hash or a name
+  "
+}
+
+alias d_ip=container_ip
