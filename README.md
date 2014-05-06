@@ -1,7 +1,7 @@
 docker-tools
 ============
 
-A set of shell tools for easier docker playground.
+A set of shell tools for easier docker playground. It's just one file `.docker-tools` that you source in you shell rcfile (or just source when you need). It's also a kind of a pretext for playing with shell, from my part.
 
 Manual Install
 ---------------
