@@ -29,6 +29,7 @@ Usage
 
 This will list available commands provided by that toolbox.
 
+If you are on mac OSX, the script assumes that you use https://github.com/noplay/docker-osx there are some special commands in docker-tools to help handle the vagrant intermediary better.
 
 Copyright
 -------------

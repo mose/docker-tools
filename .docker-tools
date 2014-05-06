@@ -6,6 +6,10 @@ docker_ssh() {
   ssh $(container_ip $1)
 }
 
+docker_bash() {
+  docker run --rm -i -t $1 /bin/bash
+}
+
 docker_clean() {
   docker ps -a | grep 'Exit' | awk '{print $1}' | while read -r id ;do
     docker rm $id
@@ -17,6 +21,9 @@ docker_clean() {
 
 sshconfig_setup() {
   if [[ "$OSTYPE" == "darwin"* ]]; then
+    if ! grep -c 'Host vagrant-osx' $HOME/.ssh/config &> /dev/null; then
+      docker-osx vagrant ssh-config | sed 's/Host default/Host vagrant-osx/' >> ~/.ssh/config
+    fi
     if ! grep -c 'Host 172.17.0.\*' $HOME/.ssh/config &> /dev/null; then
       echo "Host 172.17.0.*" >> ~/.ssh/config
       echo "  User root" >> ~/.ssh/config
@@ -32,21 +39,34 @@ stop_rm() {
   docker stop $1 && docker rm $1
 }
 
+docker_tools_update() {
+  curl -o $HOME/.docker-tools -s \
+    https://raw.githubusercontent.com/mose/docker-tools/master/.docker-tools
+  source $HOME/.docker-tools
+}
+
+
 docker_tools() {
   echo "Usage:"
   echo "  d_ip <container>   : spits the IP of a given container"
   echo "                       <container> can be a hash or a name"
   echo "  d_ssh <container>  : ssh to the container (supposing it runs sshd)"
+  echo "  d_bash <image>     : runs the <image> in interactive mode with a bash shell"
   echo "  d_clean            : cleans transitory images when a build fails"
   echo "  d_drop <container> : stop a running container and rm it (as --rm don't work with -d)"
+  echo "  d_update           : download the last version of .docker-tools"
   echo
   echo "Specific for use with docker-osx:"
   echo "  d_ssh_setup        : adds a trick to ssh directly in the containers on the vagrant"
 }
 
 alias d_ip=container_ip
+alias d_ssh=docker_ssh
+alias d_bash=docker_bash
 alias d_clean=docker_clean
 alias d_drop=stop_rm
+alias d_update=docker_tools_update
+
 alias d_ssh_setup=sshconfig_setup
 
 alias docker-tools=docker_tools
