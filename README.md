@@ -10,7 +10,7 @@ To install, you can get .docker-tools and add to your .bashrc or your .zshrc
 
     source .docker-tools
 
-uto install
+Auto install
 ---------------
 
 If you trust me (or if you are mose itself). But really, prefer manual install, as a matter of habit, or read the source of the install script carefully to see if it fits you.
