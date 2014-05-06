@@ -42,10 +42,21 @@ stop_rm() {
 }
 
 docker_tools_update() {
-  curl -H "Cache-control: no-cache" -o $HOME/.docker-tools -s \
-    https://raw.githubusercontent.com/mose/docker-tools/master/.docker-tools
-  source $HOME/.docker-tools
-  echo "docker-tools updated."
+  local upversion=$( curl https://raw.githubusercontent.com/mose/docker-tools/master/VERSION )
+  if [[ $DOCKER_TOOLS_VERSION != $upversion ]]; then
+    echo -n "You use v$DOCKER_TOOLS_VERSION and v$upversion is available. Do you wnat to download it ? [Y/n] "
+    read resp
+    if [[ $resp == "n" ]]; then
+      echo "Update cancelled."
+    else
+      curl -H "Cache-control: no-cache" -o $HOME/.docker-tools -s \
+        https://raw.githubusercontent.com/mose/docker-tools/master/.docker-tools
+      source $HOME/.docker-tools
+      echo "docker-tools updated to v$DOCKER_TOOLS_VERSION."
+    fi
+  else
+    echo "Your docker-tools version is already up to date (v$DOCKER_TOOLS_VERSION)."
+  fi
 }
 
 
