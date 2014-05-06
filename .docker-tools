@@ -1,5 +1,3 @@
-#!/bin/bash
-
 container_ip() {
   docker inspect -f '{{.NetworkSettings.IPAddress}}' $1
 }
@@ -21,6 +19,8 @@ sshconfig_setup() {
       echo "  IdentityFile $ROOTDIR/.ssh/id_rsa" >> ~/.ssh/config
       echo "  ProxyCommand ssh -q -W %h:%p vagrant-osx" >> ~/.ssh/config
     fi
+  else
+    echo "This setup is not required on linux."
   fi
 }
 
