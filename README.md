@@ -31,7 +31,16 @@ Usage
 
     docker-tools
 
-This will list available commands provided by that toolbox.
+    Usage:
+      d_ip <container>   : spits the IP of a given container
+                           <container> can be a hash or a name
+      d_ssh <container>  : ssh to the container (supposing it runs sshd)
+      d_bash <image>     : runs the <image> in interactive mode with a bash shell
+      d_clean            : cleans transitory images when a build fails
+      d_drop <container> : stop a running container and rm it (as --rm don't work with -d)
+      d_update           : download the last version of .docker-tools
+    Specific for use with docker-osx:
+      d_ssh_setup        : adds a trick to ssh directly in the containers on the vagrant
 
 If you are on mac OSX, the script assumes that you use https://github.com/noplay/docker-osx and there are some special commands in docker-tools to help handle the vagrant intermediary better (`d_ssh_setup` in perticular, makes possible to directly ssh containers without hopping on vagrant).
 
